@@ -5,7 +5,7 @@ function delegateHashGeneration() {
     let useWorker = document.querySelector('[name=useWebWorker]').checked
 
     if (!useWorker) {
-        const hashes = generateHashes().join('<br>')
+        const hashes = generateHashes().join('\n')
         showHashes(hashes)
     } else {
         const worker = new Worker('worker.js')
@@ -18,7 +18,7 @@ function delegateHashGeneration() {
 }
 
 function showHashes(hashes) {
-    document.querySelector('output').innerText = hashes
+    document.querySelector('#output').value = hashes
 }
 
 button.addEventListener('click', () => {

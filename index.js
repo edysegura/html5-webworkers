@@ -1,28 +1,36 @@
-
-const button = document.querySelector('button')
-
 function delegateHashGeneration() {
-    let useWorker = document.querySelector('[name=useWebWorker]').checked
+  let useWorker = document.querySelector('[name=useWebWorker]').checked
+  if (!useWorker) {
+    generateWithoutWebWorker()
+  } else {
+    generateWithWebWorker()
+  }
+}
 
-    if (!useWorker) {
-        const hashes = generateHashes().join('\n')
-        showHashes(hashes, 'without webwork')
-    }
-    else {
-        const worker = new Worker('worker.js')
-        worker.addEventListener('message', e => {
-            // console.log(e.data)
-            showHashes(e.data, 'with webwork')
-        })
-        worker.postMessage(true)
-    }
+function generateWithWebWorker() {
+  const method = 'with webwork'
+  console.time(method)
+  const worker = new Worker('worker.js')
+  worker.addEventListener('message', e => {
+    // console.log(e.data)
+    showHashes(e.data, method)
+  })
+  worker.postMessage(true)
+}
+
+function generateWithoutWebWorker() {
+  const method = 'without webwork'
+  console.time(method)
+  const hashes = generateHashes().join('\n')
+  showHashes(hashes, method)
 }
 
 function showHashes(hashes, method) {
-    console.log(`Done ${method}!`)
+  console.timeEnd(method)
+  console.log(`Done ${method}!`)
 }
 
+const button = document.querySelector('button')
 button.addEventListener('click', () => {
-    delegateHashGeneration()
+  delegateHashGeneration()
 })
-

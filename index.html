@@ -1,27 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>WebWorker Basics</title>
-    <link rel="stylesheet" href="assets/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>WebWorker Basics</title>
+<link rel="stylesheet" href="assets/style.css">
+
 </head>
 <body>
 
 <h1>WebWorker Basics</h1>
 
 <div>
-    <img src="assets/giphy.gif" alt="animation">
-    <p>A simple gif image to check if the main UI thread isn't stucked.</p>
+  <img src="assets/giphy.gif" alt="animation">
+  <p>A simple gif image to check if the main UI thread isn't stucked.</p>
 </div>
 
 <div>
-    <button>Generate hashes</button>
-    <div>
-        <input type="radio" name="useWebWorker" value="true"> WebWorker
-        <input type="radio" name="useWebWorker" value="false" checked> Without WebWorker
-    </div>
+  <button>Generate hashes</button>
+  <div>
+    <label>
+      <input type="radio" name="useWebWorker" value="true"> WebWorker
+    </label>
+    <label>
+      <input type="radio" name="useWebWorker" value="false" checked> Without WebWorker
+    </label>
+  </div>
 </div>
 
 <output id="output"></output>

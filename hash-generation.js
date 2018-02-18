@@ -4,7 +4,7 @@ function generateHash() {
 
 function generateHashes() {
     const hashes = []
-    for (let i = 0; i < 100000; i++) {
+    for (let i = 0; i < 1000000; i++) {
         hashes.push(generateHash())
     }
     return hashes

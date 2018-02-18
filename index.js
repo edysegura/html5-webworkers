@@ -6,19 +6,20 @@ function delegateHashGeneration() {
 
     if (!useWorker) {
         const hashes = generateHashes().join('\n')
-        showHashes(hashes)
-    } else {
+        showHashes(hashes, 'without webwork')
+    }
+    else {
         const worker = new Worker('worker.js')
         worker.addEventListener('message', e => {
             // console.log(e.data)
-            showHashes(e.data)
+            showHashes(e.data, 'with webwork')
         })
         worker.postMessage(true)
     }
 }
 
-function showHashes(hashes) {
-    document.querySelector('#output').value = hashes
+function showHashes(hashes, method) {
+    console.log(`Done ${method}!`)
 }
 
 button.addEventListener('click', () => {

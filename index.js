@@ -1,19 +1,19 @@
 function delegateHashGeneration() {
   let useWorker = document.querySelector('[name=useWebWorker]').checked
-  if (!useWorker) {
-    generateWithoutWebWorker()
-  } else {
+  if (useWorker) {
     generateWithWebWorker()
+  } else {
+    generateWithoutWebWorker()
   }
 }
 
 function generateWithWebWorker() {
   const method = 'with webwork'
-  console.time(method)
   const worker = new Worker('worker.js')
+  console.time(method)
   worker.addEventListener('message', e => {
     // console.log(e.data)
-    showHashes(e.data, method)
+    handleHashes(e.data, method)
   })
   worker.postMessage(true)
 }
@@ -22,10 +22,10 @@ function generateWithoutWebWorker() {
   const method = 'without webwork'
   console.time(method)
   const hashes = generateHashes().join('\n')
-  showHashes(hashes, method)
+  handleHashes(hashes, method)
 }
 
-function showHashes(hashes, method) {
+function handleHashes(hashes, method) {
   console.timeEnd(method)
   console.log(`Done ${method}!`)
 }

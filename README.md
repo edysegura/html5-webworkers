@@ -7,7 +7,7 @@ Examples to demonstrate HTML5 Web Workers API
 ## References
 
 - [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
-- [WebWorkers: Code Session - Supercharged](https://www.youtube.com/watch?v=X57mh8tKkgE)
+- [Web Workers: Code Session - Supercharged](https://www.youtube.com/watch?v=X57mh8tKkgE)
 - [Browser database comparison](http://nolanlawson.github.io/database-comparison/)
 - [Sorting 50K Array with Bubble Sort](http://afshinm.github.io/50k/)
 

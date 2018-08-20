@@ -1,10 +1,10 @@
-onmessage = function expensive(e) {
-  var ops = e.data,
-      temp = 0;
+self.onmessage = event => {
+  let ops = event.data
+  let result = 0
 
-  while(ops--) {
-    temp += Math.random();
+  while (ops--) {
+    result += Math.random()
   }
 
-  postMessage(temp);
-};
+  self.postMessage(result)
+}

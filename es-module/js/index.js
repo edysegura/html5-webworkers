@@ -1,12 +1,12 @@
+import { isWorkerSelected, showResults } from './html.service.js'
 import { heavyOperation } from './labor-task.js'
 
 function delegateLaborTask() {
-  let isWorkerSelected = document.querySelector('[name=useWebWorker]').checked
   let operationTimes = 1000000000
 
   showResults()
 
-  isWorkerSelected
+  isWorkerSelected()
     ? useWebWorker(operationTimes)
     : useMainThread(operationTimes)
 }
@@ -24,11 +24,6 @@ function useWebWorker(operationTimes) {
 function useMainThread(operationTimes) {
   let result = heavyOperation(operationTimes)
   showResults(result)
-}
-
-function showResults(result) {
-  const output = document.getElementById('output')
-  output.textContent = result ? `received: ${result}` : ''
 }
 
 const button = document.querySelector('button')

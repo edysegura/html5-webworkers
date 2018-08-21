@@ -1,10 +1,12 @@
-self.onmessage = event => {
-  let ops = event.data
+function heavyOperation(operationTimes) {
   let result = 0
-
-  while (ops--) {
+  while (operationTimes--) {
     result += Math.random()
   }
-
-  self.postMessage(result)
+  return result
 }
+
+self.addEventListener('message', event => {
+  let result = heavyOperation(event.data)
+  self.postMessage(result)
+})

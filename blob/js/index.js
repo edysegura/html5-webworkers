@@ -29,9 +29,7 @@ function workerBody() {
 }
 
 function getWorkerAsString() {
-  // firefox adds "use strict"; to any function which might block worker execution so knock it off
-  return '(' + workerBody + ')();'
-    .replace('"use strict";', '')
+  return '(' + workerBody + ')()'
 }
 
 function getBlobWoker() {

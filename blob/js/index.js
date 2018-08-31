@@ -34,7 +34,7 @@ function getWorkerAsString() {
 
 function getBlobWoker() {
   const blob = new Blob([ getWorkerAsString() ])
-  const blobURL = (window.URL ? URL : webkitURL).createObjectURL(blob, {
+  const blobURL = URL.createObjectURL(blob, {
     type: 'application/javascript; charset=UTF-8'
   })
   return blobURL

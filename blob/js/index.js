@@ -29,7 +29,7 @@ function workerBody() {
 }
 
 function getWorkerAsString() {
-  return '(' + workerBody + ')()'
+  return `( ${workerBody} )()`
 }
 
 function getBlobWoker() {

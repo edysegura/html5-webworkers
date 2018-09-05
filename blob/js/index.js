@@ -9,7 +9,7 @@ function delegateLaborTask() {
     : useMainThread(operationTimes)
 }
 
-function workerBody() {
+function workerScope() {
   const self = this
 
   function heavyOperation(operationTimes) {
@@ -28,12 +28,13 @@ function workerBody() {
   return heavyOperation
 }
 
-function getWorkerAsString() {
-  return `( ${workerBody} )()`
+function getWorkerAsString(worker) {
+  return `( ${worker} )()`
 }
 
 function getBlobWoker() {
-  const blob = new Blob([ getWorkerAsString() ])
+  const worker = getWorkerAsString(workerScope)
+  const blob = new Blob([ worker ])
   const blobURL = URL.createObjectURL(blob, {
     type: 'application/javascript; charset=UTF-8'
   })
@@ -49,7 +50,7 @@ function useWebWorker(operationTimes) {
 }
 
 function useMainThread(operationTimes) {
-  const heavyOperation = workerBody()
+  const heavyOperation = workerScope()
   const result = heavyOperation(operationTimes)
   showResults(result)
 }

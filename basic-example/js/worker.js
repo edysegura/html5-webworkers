@@ -1,3 +1,5 @@
+'use strict'
+
 function heavyOperation(operationTimes) {
   let result = 0
   while (operationTimes--) {

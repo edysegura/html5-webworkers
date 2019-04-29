@@ -1,3 +1,5 @@
+'use strict'
+
 function delegateLaborTask() {
   let isWorkerSelected = document.querySelector('[name=useWebWorker]').checked
   let operationTimes = 1000000000

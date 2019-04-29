@@ -1,3 +1,5 @@
+'use strict'
+
 function delegateHashGeneration() {
   let useWorker = document.querySelector('[name=useWebWorker]').checked
   if (useWorker) {

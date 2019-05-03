@@ -1,11 +1,17 @@
 function generateHash() {
-    return "id" + Math.random() * Math.pow(10, 17) + Math.random() * Math.pow(10, 17) + Math.random() * Math.pow(10, 17) + Math.random() * Math.pow(10, 17)
+  return (
+    'id' +
+    Math.random() * Math.pow(10, 17) +
+    Math.random() * Math.pow(10, 17) +
+    Math.random() * Math.pow(10, 17) +
+    Math.random() * Math.pow(10, 17)
+  )
 }
 
 function generateHashes() {
-    const hashes = []
-    for (let i = 0; i < 1000000; i++) {
-        hashes.push(generateHash())
-    }
-    return hashes
+  const hashes = []
+  for (let i = 0; i < 1000000; i++) {
+    hashes.push(generateHash())
+  }
+  return hashes
 }

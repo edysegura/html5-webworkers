@@ -1,11 +1,13 @@
 # HTML5 Web Workers API
 
 Examples to demonstrate HTML5 Web Workers API
+
 ![webworker explained](assets/webworker-explained.png)
 ![webworker explained](assets/web-workers.png)
 
 ## References
 
+- [Web Workers Demystified](https://medium.com/clockwork-nl/web-workers-demystified-fb4c84bd566c)
 - [How to Avoid DOM Blocking in JavaScript](https://www.sitepoint.com/avoiding-dom-blocking/)
 - [Web Workers API](https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers)
 - [Web Workers: Code Session - Supercharged](https://www.youtube.com/watch?v=X57mh8tKkgE)

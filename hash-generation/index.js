@@ -14,6 +14,7 @@ function useWebWorker() {
   worker.addEventListener('message', event => {
     const hashes = event.data
     hashesHandler(hashes, method)
+    worker.terminate()
   })
   worker.postMessage('generate hashes')
 }

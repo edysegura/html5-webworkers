@@ -16,7 +16,6 @@ function useWebWorker(operationTimes) {
 
   worker.addEventListener('message', ({ data }) => {
     showResults(data)
-    worker.terminate()
   })
 
   worker.postMessage(operationTimes)

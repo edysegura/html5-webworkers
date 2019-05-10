@@ -1,8 +1,8 @@
 'use strict'
 
 function delegateLaborTask() {
-  let isWorkerSelected = document.querySelector('[name=useWebWorker]').checked
-  let operationTimes = 1000000000
+  const isWorkerSelected = document.querySelector('[name=useWebWorker]').checked
+  const operationTimes = 1000000000
 
   showResults()
 
@@ -36,7 +36,7 @@ function getWorkerAsString(worker) {
 
 function getBlobWoker() {
   const worker = getWorkerAsString(workerScope)
-  const blob = new Blob([ worker ])
+  const blob = new Blob([worker])
   const blobURL = URL.createObjectURL(blob, {
     type: 'application/javascript; charset=UTF-8'
   })
@@ -47,6 +47,7 @@ function useWebWorker(operationTimes) {
   const worker = new Worker(getBlobWoker())
   worker.addEventListener('message', event => {
     showResults(event.data)
+    worker.terminate()
   })
   worker.postMessage(operationTimes)
 }

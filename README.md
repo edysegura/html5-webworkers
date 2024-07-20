@@ -14,6 +14,7 @@ Examples to demonstrate HTML5 Web Workers API
 - [Web Workers: Code Session - Supercharged](https://www.youtube.com/watch?v=X57mh8tKkgE)
 - [Browser database comparison](http://nolanlawson.github.io/database-comparison/)
 - [Sorting 50K Array with Bubble Sort](http://afshinm.github.io/50k/)
+- [Blocking the main UI Thread](https://lsantos-web-workers.vercel.app/)
 
 ---
 In case you have doubt why I'm not using semicolon is because I got inspiration from these talks:

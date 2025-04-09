@@ -16,6 +16,8 @@ function useWebWorker(operationTimes) {
 
   worker.addEventListener('message', (event) => {
     showResults(event.data)
+    worker.terminate()
+    console.log('[worker] Worker terminated')
   })
 
   worker.postMessage(operationTimes)

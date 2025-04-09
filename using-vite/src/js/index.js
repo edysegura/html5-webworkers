@@ -12,9 +12,9 @@ function delegateLaborTask() {
 }
 
 function useWebWorker(operationTimes) {
-  const worker = new Worker('js/worker.js', { type: 'module' })
+  const worker = new Worker('src/js/worker.js', { type: 'module' })
 
-  worker.addEventListener('message', event => {
+  worker.addEventListener('message', (event) => {
     showResults(event.data)
   })
 

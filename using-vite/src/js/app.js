@@ -1,7 +1,7 @@
 import { isWorkerSelected, showResults } from './html.service.js'
 import { heavyOperation } from './labor-task.js'
 
-const progressBar = document.getElementById('processProgress')
+const progressBar = document.getElementById('progressbar')
 let progressInterval
 
 function updateProgressBar() {

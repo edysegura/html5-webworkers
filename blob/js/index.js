@@ -22,7 +22,7 @@ function workerScope() {
     return result
   }
 
-  self.addEventListener('message', event => {
+  self.addEventListener('message', (event) => {
     let result = heavyOperation(event.data)
     self.postMessage(result)
   })
@@ -38,14 +38,14 @@ function getBlobWoker() {
   const worker = getWorkerAsString(workerScope)
   const blob = new Blob([worker])
   const blobURL = URL.createObjectURL(blob, {
-    type: 'application/javascript; charset=UTF-8'
+    type: 'application/javascript; charset=UTF-8',
   })
   return blobURL
 }
 
 function useWebWorker(operationTimes) {
   const worker = new Worker(getBlobWoker())
-  worker.addEventListener('message', event => {
+  worker.addEventListener('message', (event) => {
     showResults(event.data)
     worker.terminate()
   })

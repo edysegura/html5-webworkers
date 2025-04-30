@@ -9,6 +9,12 @@
       href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
     />
     <title>Shared Worker</title>
+    <style>
+      textarea {
+        min-height: 200px;
+        font-family: monospace;
+      }
+    </style>
   </head>
   <body>
     <main class="container">
@@ -20,6 +26,7 @@
         <p>
           <a href="index.html" role="button" class="outline">Back to Index</a>
         </p>
+        <textarea id="log" aria-label="Worker Messages" readonly></textarea>
       </article>
     </main>
     <script src="js/app.js"></script>

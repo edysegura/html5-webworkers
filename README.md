@@ -3,7 +3,10 @@
 Examples to demonstrate HTML5 Web Workers API
 
 ![webworker explained](assets/webworker-explained.png)
+
 ![webworker explained](assets/web-workers.png)
+
+![webworker detailed explained](assets/webworker-detailed-explained.png)
 
 ## References
 

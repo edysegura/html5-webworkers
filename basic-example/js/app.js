@@ -6,15 +6,20 @@ function delegateLaborTask() {
 
   showResults()
 
-  isWorkerSelected
-    ? useWebWorker(operationTimes)
-    : useMainThread(operationTimes)
+  const button = document.querySelector('button')
+  button.setAttribute('aria-busy', 'true')
+
+  setTimeout(() => {
+    isWorkerSelected
+      ? useWebWorker(operationTimes)
+      : useMainThread(operationTimes)
+  }, 100)
 }
 
 function useWebWorker(operationTimes) {
   const worker = new Worker('js/worker.js')
 
-  worker.addEventListener('message', event => {
+  worker.addEventListener('message', (event) => {
     showResults(event.data)
   })
 
@@ -37,6 +42,7 @@ function useMainThread(operationTimes) {
 function showResults(result) {
   const output = document.getElementById('output')
   output.textContent = result ? `received: ${result}` : ''
+  document.querySelector('button').setAttribute('aria-busy', 'false')
 }
 
 const button = document.querySelector('button')

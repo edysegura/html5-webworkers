@@ -11,9 +11,7 @@ function delegateLaborTask() {
     : useMainThread(operationTimes)
 }
 
-function workerScope() {
-  const self = this
-
+function workerScope(isMainThread) {
   function heavyOperation(operationTimes) {
     let result = 0
     while (operationTimes--) {
@@ -22,15 +20,17 @@ function workerScope() {
     return result
   }
 
+  if (isMainThread) return heavyOperation
+
+  const self = this
   self.addEventListener('message', (event) => {
     let result = heavyOperation(event.data)
     self.postMessage(result)
   })
-
-  return heavyOperation
 }
 
 function getWorkerAsString(worker) {
+  console.log(worker.toString())
   return `( ${worker} )()`
 }
 
@@ -53,7 +53,8 @@ function useWebWorker(operationTimes) {
 }
 
 function useMainThread(operationTimes) {
-  const heavyOperation = workerScope()
+  const isMainThread = true
+  const heavyOperation = workerScope(isMainThread)
   const result = heavyOperation(operationTimes)
   showResults(result)
 }

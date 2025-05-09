@@ -31,7 +31,9 @@ function delegateLaborTask() {
 }
 
 function useWebWorker(operationTimes) {
-  const worker = new Worker('src/js/worker.js', { type: 'module' })
+  const worker = new Worker(new URL('./worker.js', import.meta.url), {
+    type: 'module',
+  })
   worker.addEventListener('message', (event) => {
     showResults(event.data)
     clearInterval(progressInterval)

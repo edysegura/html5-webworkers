@@ -31,7 +31,8 @@ function delegateLaborTask() {
 }
 
 function useWebWorker(operationTimes) {
-  const worker = new Worker(new URL('./worker.js', import.meta.url), {
+  const workerUrl = new URL('./worker.js', import.meta.url)
+  const worker = new Worker(workerUrl, {
     type: 'module',
   })
   worker.addEventListener('message', (event) => {

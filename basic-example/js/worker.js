@@ -1,5 +1,3 @@
-'use strict'
-
 function heavyOperation(operationTimes) {
   let result = 0
   while (operationTimes--) {
@@ -8,7 +6,7 @@ function heavyOperation(operationTimes) {
   return result
 }
 
-self.addEventListener('message', event => {
+self.addEventListener('message', (event) => {
   let result = heavyOperation(event.data)
   self.postMessage(result)
 })

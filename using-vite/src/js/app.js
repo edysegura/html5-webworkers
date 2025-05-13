@@ -1,6 +1,9 @@
 import { isWorkerSelected, showResults } from './html.service.js'
 import { heavyOperation } from './labor-task.js'
 
+const button = document.querySelector('button')
+button.addEventListener('click', delegateLaborTask)
+
 const progressBar = document.getElementById('progressbar')
 let progressInterval
 
@@ -24,6 +27,7 @@ function updateProgressBar() {
 function delegateLaborTask() {
   let operationTimes = 1000000000
   showResults()
+  button.setAttribute('aria-busy', 'true')
   updateProgressBar()
   isWorkerSelected()
     ? useWebWorker(operationTimes)
@@ -38,8 +42,9 @@ function useWebWorker(operationTimes) {
   worker.addEventListener('message', (event) => {
     showResults(event.data)
     clearInterval(progressInterval)
-    progressBar.value = 100
     worker.terminate()
+    progressBar.value = 100
+    button.removeAttribute('aria-busy')
     console.log('[worker] Worker terminated')
   })
   worker.postMessage(operationTimes)
@@ -48,10 +53,8 @@ function useWebWorker(operationTimes) {
 function useMainThread(operationTimes) {
   let result = heavyOperation(operationTimes)
   showResults(result)
+  button.removeAttribute('aria-busy')
   clearInterval(progressInterval)
   progressBar.value = 100
   console.log('[main] Heavy operation completed')
 }
-
-const button = document.querySelector('button')
-button.addEventListener('click', delegateLaborTask)

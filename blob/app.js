@@ -1,10 +1,12 @@
-'use strict'
+const button = document.querySelector('button')
+button.addEventListener('click', delegateLaborTask)
 
 function delegateLaborTask() {
   const isWorkerSelected = document.querySelector('[name=useWebWorker]').checked
   const operationTimes = 1000000000
 
   showResults()
+  button.setAttribute('aria-busy', 'true')
 
   isWorkerSelected
     ? useWebWorker(operationTimes)
@@ -62,7 +64,5 @@ function useMainThread(operationTimes) {
 function showResults(result) {
   const output = document.getElementById('output')
   output.textContent = result ? `received: ${result}` : ''
+  button.removeAttribute('aria-busy')
 }
-
-const button = document.querySelector('button')
-button.addEventListener('click', delegateLaborTask)

@@ -1,5 +1,6 @@
 import { isWorkerSelected, showResults } from './html.service.js'
 import { heavyOperation } from './labor-task.js'
+import Worker from './worker.js?worker'
 
 const button = document.querySelector('button')
 button.addEventListener('click', delegateLaborTask)
@@ -35,10 +36,7 @@ function delegateLaborTask() {
 }
 
 function useWebWorker(operationTimes) {
-  const workerUrl = new URL('./worker.js', import.meta.url)
-  const worker = new Worker(workerUrl, {
-    type: 'module',
-  })
+  const worker = new Worker()
   worker.addEventListener('message', (event) => {
     showResults(event.data)
     clearInterval(progressInterval)

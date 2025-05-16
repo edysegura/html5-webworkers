@@ -39,5 +39,5 @@ function useMainThread(operationTimes) {
 function showResults(result) {
   const output = document.getElementById('output')
   output.textContent = result ? `received: ${result}` : ''
-  button.setAttribute('aria-busy', 'false')
+  button.removeAttribute('aria-busy')
 }

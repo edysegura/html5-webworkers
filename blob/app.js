@@ -36,7 +36,7 @@ function getWorkerAsString(worker) {
   return `( ${worker} )()`
 }
 
-function getBlobWoker() {
+function getBlobWorker() {
   const worker = getWorkerAsString(workerScope)
   const blob = new Blob([worker])
   const blobURL = URL.createObjectURL(blob, {
@@ -46,7 +46,7 @@ function getBlobWoker() {
 }
 
 function useWebWorker(operationTimes) {
-  const worker = new Worker(getBlobWoker())
+  const worker = new Worker(getBlobWorker())
   worker.addEventListener('message', (event) => {
     showResults(event.data)
     worker.terminate()
